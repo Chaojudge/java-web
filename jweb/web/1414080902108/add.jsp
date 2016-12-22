@@ -1,8 +1,21 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="edu.hzu.javaweb.labs.se1414080902108.*" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
+<%
+        QuestionDAO dao = new QuestionDAO();
+		List<Question> questionlist = new ArrayList<Question>();
+		try {
+			questionlist = dao.findSubject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		request.setAttribute("result", questionlist);
+ %>
 
 <!DOCTYPE html>
 <html>
@@ -58,12 +71,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
 
         #submit {
-            margin-left: 23%;
+            margin-left: 20%;
         }
 
         * {
             font-family: "微软雅黑";
         }
+        a{
+            color:#FFFFFF;
+            text-decoration: none;
+        }
+        a:HOVER {
+            color:#FFFFFF;
+	        text-decoration: none;
+}
     </style>
 </head>
 <body>
@@ -79,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">在线考试系统</a>
+                <a class="navbar-brand" href="index.jsp">在线考试系统</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -89,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">功能<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">首页</a></li>
+                            <li><a href="index.jsp">首页</a></li>
                             <li class="divider"></li>
                             <li><a href="#">新增试题</a></li>
                             <li><a href="#">查询成绩</a></li>
@@ -111,13 +132,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li><a href="#">关于我们</a></li>
                     <li><a href="#">帮助</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">我的 <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                         <c:if test="${name != null}">欢迎，<%=session.getAttribute("name") %></c:if> 
+                         <c:if test="${name == null}">我的</c:if> 
+                         <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">修改信息</a></li>
                             <li><a href="#">我的记录</a></li>
                             <li><a href="#">意见反馈</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">退出</a></li>
+                            <li>
+                            <% String flag="";
+                               Object obj = session.getAttribute("flag");
+                               if(obj != null){
+                                flag = obj.toString();
+                               }
+                               if(flag.equals("login_success")){
+                             %>
+                             <a href="<%=request.getContextPath() %>/LogoutSe1414080902108">退出</a>
+                             <% }else{ %>
+                             <a href="<%=request.getContextPath() %>/sign.jsp">登录</a>
+                             <%} %>
+                            </li>
+                            <li><a href="<%=request.getContextPath() %>/sign_up.jsp">注册</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -142,7 +179,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <label for="inputSubject" class="col-sm-2 control-label">Subject</label>
 
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputSubject" name="subject" placeholder="Enter Subject">
+                            <select class="form-control" name="subject">
+                            <c:forEach var="question" items="${result}">
+                            <option><c:out value="${question.subject}"></c:out></option>
+                            </c:forEach>
+                        </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -209,6 +250,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="container">
                         <button type="submit" class="btn btn-success" id="submit" name="submit">Add</button>
                         <button type="reset" class="btn btn-primary" id="reset" name="reset">Reset</button>
+                        <button type="button" class="btn btn-success" id="select" name="select"><a href="Se1414080902108Servlet">Select</a></button>
                     </div>
                 </form>
                 <hr/>

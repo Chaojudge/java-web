@@ -1,106 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'MyJsp.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Ê∑ªÂä†Â≠¶Áîü‰ΩìÊµã‰ø°ÊÅØ</title>
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-<style type="text/css">
-body{
- background:  #858585 ;
-}
-label{
-  font-weight: 100px;
-}
-form{
-  margin-right: 150px;
-}
-</style>
+	<title> ÷ª˙ª∞∑—≥‰÷µø®œ˙ €œµÕ≥</title>
 </head>
 <body>
-<br/><br/><br/><br/>
-<div class="container">
-  <div class="col-md-3"></div>
-  <div class="col-md-6" style="padding: 10px;;background-color:  #FFFFFF ">
-    <h3 align="center">Ê∑ªÂä†Â≠¶Áîü‰ΩìÊµã‰ø°ÊÅØ</h3><br/>
-    <form name="form1" method="post" action="sub" class="form-horizontal">
 
-      
-       
-
-
-         <div class="form-group">
-             <label class="control-label col-md-6">Â≠¶Âè∑Ôºö</label>
-             <div class="col-md-6">
-                 <input type="text"  name="id"  class="form-control" >
-             </div>
-             </div>
-          
-          <div class="form-group" >
-             <label class="control-label col-md-6">ÂßìÂêçÔºö</label>
-             <div class="col-md-6">
-                 <input type="text"  name="name"  class="form-control">
-             </div>
-             </div>
-             <div class="form-group">
-             <label class="control-label col-md-6">ÊÄßÂà´Ôºö</label>
-             <div class="col-md-6">
-                 <input type="text"  name="sex"  class="form-control">
-             </div>
-             </div>
-             <div class="form-group">
-             <label class="control-label col-md-6">Âπ¥ÈæÑÔºö</label>
-             <div class="col-md-6">
-                 <input type="text"  name="age"  class="form-control" >
-             </div>
-             </div>
-             <div class="form-group">
-             <label class="control-label col-md-6">Ë∫´È´òÔºö</label>
-             <div class="col-md-6">
-                 <input type="text"  name="hight"  class="form-control">
-             </div>
-             </div>
-             <div class="form-group">
-             <label class="control-label col-md-6">‰ΩìÈáçÔºö</label>
-             <div class="col-md-6">
-                 <input type="text"  name="weight"  class="form-control">
-             </div>
-             </div>
-             <div class="form-group">
-             <label class="control-label col-md-6">ËÇ∫Ê¥ªÈáèÔºö</label>
-             <div class="col-md-6">
-                 <input type="text"  name="pulmonary"  class="form-control" >
-             </div>
-             </div>
-             <div class="form-group">
-             <label class="control-label col-md-6">ÈïøË∑ëÔºö</label>
-             <div class="col-md-6">
-                 <input type="text"  name="longRun"  class="form-control">
-             </div>
-             </div>
-             <div class="form-group">
-             <label class="control-label col-md-6">Áü≠Ë∑ëÔºö</label>
-             <div class="col-md-6">
-                 <input type="text"  name="shortRun"  class="form-control">
-             </div>
-             </div>
-             <div class="form-group">
-             <label class="col-md-6"></label>
-             <div class="col-md-6">
-                 <input type="submit" value="Êèê‰∫§" onclick="check()" >
-                 <input type="reset" value="ÂèñÊ∂à" style="float:right">
-             </div>
-             </div>
-         
-
-         </div>
-   </form>
-  </div>
-  <div class="col-md-3"></div>
-</div>
-</div>
-
+    <h2 align="center"> ÷ª˙ª∞∑—≥‰÷µø®œ˙ €œµÕ≥</h2>
+    <form>
+    <table align="center">
+    <tr><td>≥‰÷µ∫≈¬Î£∫</td><td><input type="email" name="Email"></td></tr>
+    <tr><td>≥‰÷µΩ∂Ó£∫</td><td><input type="text" name="Name"></td></tr>
+    <tr><td>≥‰÷µø®’À∫≈£∫</td><td><input type="password" name="PW"></td></tr>
+   <tr><td>≥‰÷µø®√‹¬Î£∫</td><td><input type="password" name="PW"></td></tr>
+   
+   </td>
+   </tr>
+    <tr>
+    <td>
+        <input type="submit" value="»∑∂®"> <input type="reset" value="»°œ˚">
+    </td>
+    </tr>
+    </table>
+    </form>
+    <script>
+		$( "#target" ).submit(function( event ) {
+			$.ajax({
+			  url: "success.json"
+			}).done(function(data) {
+			  if ( console && console.log ) {
+				  console.dir(data);
+				  alert(data.msg);
+				}
+			});
+		});
+		
+    </script>
 </body>
-</html>
+<html>

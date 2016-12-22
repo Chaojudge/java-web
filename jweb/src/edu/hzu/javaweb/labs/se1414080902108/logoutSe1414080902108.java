@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class logoutSe1414080902108
  */
-@WebServlet("/Se1414080902108")
-public class logoutSe1414080902108 extends HttpServlet {
+@WebServlet("/1414080902108")
+public class LogoutSe1414080902108 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public logoutSe1414080902108() {
+    public LogoutSe1414080902108() {
         super();
         // TODO Auto-generated constructor stub
     }

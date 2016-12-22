@@ -23,23 +23,24 @@ public class Se1414080902119filter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		String localAddr = request.getLocalAddr();
+		request.setCharacterEncoding("utf-8");
+		chain.doFilter(request, response);
 		if("127.0.0.1".equals(localAddr))
 		{
-			System.out.println("鏈満璇锋眰");
+			System.out.println("本机请求");
 		}
 		else
 		{
-			System.out.println(localAddr+"璇锋眰");
+			System.out.println(localAddr+"请求");
 		}
-		chain.doFilter(request, response);
 		
 	}
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

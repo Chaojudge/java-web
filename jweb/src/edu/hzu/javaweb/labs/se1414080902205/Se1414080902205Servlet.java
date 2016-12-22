@@ -2,6 +2,9 @@ package edu.hzu.javaweb.labs.se1414080902205;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -83,7 +86,23 @@ public class Se1414080902205Servlet extends HttpServlet {
 					}
 				}
 			}
-			if (flat) out.println("转账成功");
+			if (flat) {
+				Connection conn = null;
+				PreparedStatement stmt = null;
+		        DBBean db = new DBBean();
+				try {
+			        conn = db.getConnection();
+			        String sql = "insert into transfer values(?,?)";
+			        stmt = db.getPreparedStatement(sql);
+			        stmt.setString(1,Account);
+			        stmt.setString(2,Amount);
+			        stmt.executeUpdate();
+			        db.closeResource(conn,null,stmt);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				out.println("转账成功");
+			}
 		}
 //		String Account = "1414080902205";
 //		String Amount = "1414080902205";

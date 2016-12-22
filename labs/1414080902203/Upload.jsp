@@ -28,19 +28,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <form action="L.jsp" method="post">
+  <form action="Pass" method="post">
 	<div id="01" style=" position:absolute; width:100%; height:100%; background-color:yellow"
-	<center> ÏÖÔÚµÄÊ±¼äÊÇ£º <%=new Date()%> £º60SºóË¢ĞÂ<hr>
+	<center> ç°åœ¨çš„æ—¶é—´æ˜¯ï¼š <%=new Date()%> ï¼š60Sååˆ·æ–°<hr>
 	<%response.setHeader("refresh","60");%>
 	</center>
-	<div>
+	</div>
 	<div id="02" style=" position:absolute; width:100%; height:100%; background-color:#33CC99">
   	<table border="0" align="center" width=400>
   	<tr><td align="center"><h1>Hello Teacher</h1></td></tr>
 	
-    <tr><td colspan="2"><h2>Ñ¡ÔñÎÄ¼ş£º*</h2><input type="file" accept="video/mp4" multiple="multiple" >
-	ÇëÊäÈëÑéÖ¤Âë£¨Upload£©:<input type="text" name="Pass"><br>
-	<input type="submit" value="È·¶¨Ìá½»"></td>
+    <tr><td colspan="2" ><h2>é€‰æ‹©æ–‡ä»¶ï¼š*</h2><input type="file" accept="video/mp4" multiple="multiple" >
+	è¯·è¾“å…¥éªŒè¯ç ï¼ˆUploadï¼‰:<input type="text" name="Pass"><br>
+	<input type="submit" value="æäº¤"><br>
+	<input type="reset"></td>
 	
 	</tr>
   	</table>
